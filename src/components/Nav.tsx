@@ -1,13 +1,11 @@
 import * as React from 'react'
-import {User} from '../types'
+import {TestContext} from '../context'
 
-export interface NavProps {
-	user: User
-	onAdd: Function
-}
+export interface NavProps {}
 
-const Nav: React.SFC<NavProps> = ({user, onAdd}) => {
-	return <h1>{user.username + onAdd(2, 5)}</h1>
+const Nav: React.SFC<NavProps> = props => {
+	const {onAdd, user} = React.useContext(TestContext)
+	return <h1>{user.uname + onAdd(2, 9)}</h1>
 }
 
 export default Nav

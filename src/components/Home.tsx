@@ -1,29 +1,24 @@
 import React, {useContext} from 'react'
-import {User} from '../types'
-import Nav from './Nav'
+import Nav from '#components/nav'
 import {TestContext} from '../context'
+import * as http from '../services/http'
 
-export interface HomeProps {
-	user: User
-	onAdd: Function
-	setUser: (user: User) => void
-}
+export interface HomeProps {}
 
-const Home: React.SFC<HomeProps> = ({user, setUser, ...props}) => {
-	const test = useContext(TestContext)
+const Home: React.SFC<HomeProps> = props => {
+	const {test, user, setUser} = useContext(TestContext)
 
-	const _user: User = {
-		...user,
-		username: 'va,pindsdnskng'
-	}
+	const getUser = () => http.get('teddlo', uname => setUser({...user, uname}))
 
 	return (
 		<>
-			<Nav user={user} {...props}></Nav>
+			<Nav></Nav>
 			<h1>{test}</h1>
-			<button onClick={() => setUser(_user)}>click</button>
+			<button onClick={getUser}>click</button>
 		</>
 	)
 }
+
+//
 
 export default Home

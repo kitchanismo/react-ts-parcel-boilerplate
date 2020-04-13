@@ -1,6 +1,16 @@
 {
 	"plugins": [
 		"@babel/plugin-proposal-class-properties",
-		["@babel/plugin-transform-runtime", {"regenerator": true}]
+		["@babel/plugin-transform-runtime", {"regenerator": true}],
+		[
+			"module-resolver",
+			{
+				"root": ["."],
+				"alias": {
+					"#components": "./src/components",
+					"#types": "./src/types"
+				}
+			}
+		]
 	]
 }
